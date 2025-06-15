@@ -1,0 +1,34 @@
+<div class="chat-container">
+    @if (isLoading())
+    {
+    <app-skeleton [count]="5" [height]="40"></app-skeleton>
+    } @else {
+    @for (group of groupedMessagesByDate; track group.dateLabel) {
+    <div class="date-divider">{{ group.dateLabel }}</div>
+
+    @for (message of group.messages; let i = $index; track message) {
+    <div class="message-row"
+        [ngClass]="{ 'received': message.senderId !== currentUser.id, 'sent': message.senderId === currentUser.id }">
+
+        <div class="message-content">
+            <div class="user-info" [ngClass]="{ 'reverse': message.senderId !== currentUser.id }"
+                *ngIf="isFirstMessageOfBlock(group.messages, i)">
+                <span>{{ getMessageSenderName(message.senderId, message.senderName) }}</span>
+                <app-user-avatar [imageUrl]="getSenderAvatar(message.senderId)" (clicked)="onOpenSidebar()"
+                    [clickable]="message.senderId !== currentUser.id">
+                </app-user-avatar>
+            </div>
+
+            <div class="message-bubble" *ngIf="message.imageUrl.length === 0">{{ message.content }}</div>
+
+            <div class="image-message-bubble" *ngIf="message.imageUrl.length > 0">
+                <img class="message-image" [src]="message.imageUrl" alt="Foto" />
+                <div class="caption" *ngIf="message.content">{{ message.content }}</div>
+            </div>
+        </div>
+    </div>
+    }
+    }
+
+    }
+</div>

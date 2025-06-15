@@ -1,0 +1,5 @@
+<button class="circle-button" [ngStyle]="{
+    backgroundColor: backgroundColor
+  }" [attr.aria-label]="tooltip" [title]="tooltip" (click)="onClick()">
+    <mat-icon [ngStyle]="{ color: iconColor }">{{ icon }}</mat-icon>
+</button>

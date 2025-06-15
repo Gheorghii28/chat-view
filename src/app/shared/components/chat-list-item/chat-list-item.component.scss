@@ -1,0 +1,25 @@
+.chat-list-item {
+    position: relative;
+    padding: 20px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-accent-secondary);
+    }
+}
+
+.timestamp {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+::ng-deep .mat-badge-content {
+    border-radius: 50% !important;
+}

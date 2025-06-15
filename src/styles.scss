@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+:root {
+    --color-surface-primary: #1C1C1C; // Main surface (chat background) 
+    --color-surface-secondary: #252525; // Sidebar, received messages (bubble) 
+    --color-surface-tertiary: #55575D; // Divider 
+
+    --color-accent-primary: #C82151; // Accent color (sent messages, buttons) 
+    --color-accent-secondary: #392B30; // Button background 
+    --color-accent-highlight: #262626; // Message divider in chat, like line --Today--line 
+
+    --color-text-primary: #ffffff; // Primary text 
+    --color-text-secondary: #C0C0C0; // Secondary text (e.g. time, info) 
+    --color-text-muted: #7E7E7E; // Muted or disabled text 
+
+    --color-status-online: #50C505; // Online indicator 
+
+    --color-border-default: #313131; // Default border color 
+
+
+    @include mat.sidenav-overrides((container-divider-color: var(--color-surface-tertiary),
+        ));
+    @include mat.progress-spinner-overrides((active-indicator-color: var(--color-accent-primary),
+        ));
+    @include mat.badge-overrides((background-color: var(--color-accent-primary),
+            text-color: var(--color-text-primary),
+            text-size: 0.6rem,
+            container-padding: 0px,
+        ));
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.text {
+    font-size: 0.85rem;
+    color: var(--color-text-primary);
+}
+
+.subtext {
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+}
+
+.divider {
+    color: var(--color-surface-tertiary);
+    padding-left: 35px;
+    padding-right: 20px;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-surface-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-secondary);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-status-online);
+    border: 2px solid var(--color-text-primary);
+    border-radius: 50%;
+
+    &.online {
+        background-color: var(--color-status-online);
+    }
+
+    &.away {
+        background-color: #FFC107;
+    }
+
+    &.offline {
+        display: none;
+    }
+}

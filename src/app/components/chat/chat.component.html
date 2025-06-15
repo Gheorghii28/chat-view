@@ -1,0 +1,14 @@
+<mat-drawer-container class="chat-container">
+    <mat-drawer-content>
+        <app-chat-header [chat]="currentChat" [sidebarOpened]="sidebar.opened" (openSidebar)="onOpenSidebar($event)"
+            (closeSidebar)="onCloseSidebar()"></app-chat-header>
+        <app-chat-messages [chat]="currentChat" (openSidebar)="onOpenSidebar($event)"></app-chat-messages>
+    </mat-drawer-content>
+    <mat-drawer #sidebar position="end" mode="side">
+        <ng-container [ngSwitch]="sidebarView">
+            <app-profile-sidebar *ngSwitchCase="'profile'" [chat]="currentChat" (closeSidebar)="onCloseSidebar()" (changeSidebarView)="onChangeSidebarView($event)"></app-profile-sidebar>
+            <app-chat-shared-content *ngSwitchCase="'shared-content'" (changeSidebarView)="onChangeSidebarView($event)"></app-chat-shared-content>
+            <div *ngSwitchDefault>Kein Inhalt ausgewählt</div>
+        </ng-container>
+    </mat-drawer>
+</mat-drawer-container>

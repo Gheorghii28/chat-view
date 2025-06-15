@@ -1,0 +1,17 @@
+.avatar-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    &.clickable {
+        cursor: pointer;
+    }
+
+    .avatar {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid var(--color-surface-secondary);
+    }
+}

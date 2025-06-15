@@ -1,0 +1,50 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Medien, Links & Documente</h2>
+        <app-icon-circle-button icon="close" tooltip="Close" (clicked)="onSwitchSidebarView('profile')">
+        </app-icon-circle-button>
+    </div>
+
+    <div class="sidebar-actions">
+        <app-icon-circle-button icon="delete" tooltip="Delete" iconColor="#C82151" backgroundColor="#392B30"
+            (clicked)="deleteMedia()">
+        </app-icon-circle-button>
+
+        <app-icon-circle-button icon="share" tooltip="Share" iconColor="#C82151" backgroundColor="#392B30"
+            (clicked)="shareMedia()">
+        </app-icon-circle-button>
+
+        <app-icon-circle-button icon="download" tooltip="Download" iconColor="#C82151" backgroundColor="#392B30"
+            (clicked)="downloadMedia()">
+        </app-icon-circle-button>
+
+        <button class="action-btn select" aria-label="Select">
+            Auswählen
+        </button>
+    </div>
+
+    @if (isLoading())
+    {
+    <div class="media-section">
+        <mat-divider></mat-divider>
+        <app-skeleton [count]="1" [height]="30" [width]="200"></app-skeleton>
+        <div class="media-grid">
+            <app-skeleton [count]="1" [height]="69" [width]="104"></app-skeleton>
+            <app-skeleton [count]="1" [height]="69" [width]="104"></app-skeleton>
+            <app-skeleton [count]="1" [height]="69" [width]="104"></app-skeleton>
+            <app-skeleton [count]="1" [height]="69" [width]="104"></app-skeleton>
+            <app-skeleton [count]="1" [height]="69" [width]="104"></app-skeleton>
+            <app-skeleton [count]="1" [height]="69" [width]="104"></app-skeleton>
+        </div>
+    </div>
+    } @else {
+    <div *ngFor="let section of media" class="media-section">
+        <mat-divider></mat-divider>
+        <h3>{{ section.title }}</h3>
+        <div class="media-grid">
+            <img *ngFor="let img of section.images" [src]="img" alt="Media image">
+        </div>
+    </div>
+    }
+
+</div>

@@ -1,0 +1,10 @@
+@if (isLoading()) {
+<div class="loading">
+    <mat-spinner></mat-spinner>
+    <p>Chats werden geladen...</p>
+</div>
+} @else {
+@for (chat of chatList; track chat) {
+<app-chat-list-item [chat]="chat" />
+}
+}

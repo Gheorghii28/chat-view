@@ -1,0 +1,12 @@
+<div class="sidebar-header">
+  <h1>Chats</h1>
+  <app-icon-circle-button icon="search"></app-icon-circle-button>
+</div>
+<div class="chat-tabs">
+  <button class="tab" [class.active]="activeTab === 'all'" (click)="setTab('all')"  [disabled]="isLoading()">
+    Alle Chats
+  </button>
+  <button class="tab" [class.active]="activeTab === 'unread'" (click)="setTab('unread')"  [disabled]="isLoading()">
+    Ungelesen
+  </button>
+</div>

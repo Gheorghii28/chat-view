@@ -1,0 +1,14 @@
+<div class="chat-list-item" (click)="openChat()" [ngStyle]="getChatStyle(chat)">
+    <div class="user-info" [matBadge]="getUnreadCount(chat)" [matBadgeHidden]="getUnreadCount(chat) === 0" matBadgeOverlap="true" matBadgePosition="below after">
+        <app-user-avatar [imageUrl]="getChatPartner(chat, getCurrentUser().id)!.avatarUrl || ''" [status]="getChatPartner(chat, getCurrentUser().id)?.profile?.status">
+        </app-user-avatar>
+        <div>
+            <div class="text">{{getChatPartner(chat, getCurrentUser().id)!.name}}</div>
+            <div class="subtext">{{getLastMessage(chat)?.content || 'Noch keine Nachrichten' }}</div>
+        </div>
+    </div>
+    <div class="timestamp subtext">{{ getLastMessageTimestamp(chat) }}</div>
+</div>
+<div class="divider">
+    <mat-divider></mat-divider>
+</div>

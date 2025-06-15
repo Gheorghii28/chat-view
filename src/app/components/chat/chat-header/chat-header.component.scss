@@ -1,0 +1,20 @@
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-surface-secondary);
+    color: var(--color-text);
+    padding: 15px 10px 15px 20px;
+    border-bottom: 2px solid var(--color-border-default);
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.icon-buttons {
+    display: flex;
+    gap: 10px;
+}

@@ -1,0 +1,27 @@
+.chat-container {
+    height: 100%;
+}
+
+mat-drawer-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+app-chat-messages {
+    flex: 1 1 auto;
+    overflow: auto;
+    background-color: var(--color-surface-secondary);
+}
+
+mat-drawer {
+    background-color: var(--color-surface-secondary);
+}
+
+mat-drawer-container {
+    background-color: var(--color-surface-secondary);
+}
+
+app-chat-messages {
+    background-color: var(--color-surface-primary);
+}

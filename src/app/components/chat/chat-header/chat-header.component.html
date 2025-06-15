@@ -1,0 +1,41 @@
+<div class="chat-header">
+    <div class="user-info">
+        @if (isLoading())
+        {
+        <app-skeleton [count]="1" [height]="40" [width]="40" [appearance]="'circle'" [borderRadius]="'50%'">
+        </app-skeleton>
+        } @else{
+        <app-user-avatar [imageUrl]="chatPartner?.avatarUrl || ''"
+            [status]="chatPartner?.profile?.status" (clicked)="onOpenSidebar()">
+        </app-user-avatar>
+        }
+
+        <div>
+            @if (isLoading())
+            {
+            <app-skeleton [count]="1" [height]="30" [width]="200"></app-skeleton>
+            } @else{
+            <div class="text">{{chatPartner?.name}}</div>
+            <div class="subtext">Zuletzt activ vor 2 min</div>
+            }
+        </div>
+    </div>
+    <div class="icon-buttons">
+        <app-icon-circle-button icon="photo_camera" tooltip="Camera" iconColor="#C82151" backgroundColor="#392B30"
+            (clicked)="onCameraClick()">
+        </app-icon-circle-button>
+        <app-icon-circle-button icon="phone" tooltip="Call" iconColor="#C82151" backgroundColor="#392B30"
+            (clicked)="onPhoneClick()">
+        </app-icon-circle-button>
+
+        <ng-container *ngIf="!sidebarOpened; else closeBtn">
+            <app-icon-circle-button icon="more_vert" tooltip="More" (clicked)="onPhoneClick()">
+            </app-icon-circle-button>
+        </ng-container>
+        <ng-template #closeBtn>
+            <app-icon-circle-button icon="chevron_right" tooltip="" (clicked)="onCloseSidebar()">
+            </app-icon-circle-button>
+        </ng-template>
+
+    </div>
+</div>
